@@ -1,3 +1,24 @@
+.card {
+  margin-bottom: 10px;
+  width: 230px;
+  max-height: 150px;
+}
+
 .card-title {
+  font-size: 12px;
   margin-bottom: .35rem;
 }
+.card-body {
+  max-height: 160px;
+}
+p.card-text {
+  max-height: 65px;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  font-size: 10px;
+  width: 200px;
+}
+.text-muted {
+  font-size: 10px;
+}
+
