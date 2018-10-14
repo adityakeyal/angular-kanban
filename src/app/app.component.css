@@ -1,0 +1,17 @@
+.clean-block.call-to-action.blue.add-on {
+  padding:50px 0;
+  text-align:center;
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-align:center;
+  align-items:center;
+  -ms-flex-pack:center;
+  justify-content:center;
+  -ms-flex-direction:column;
+  flex-direction:column;
+}
+
+.clean-block.call-to-action.blue.add-on {
+  background-color:#007bff;
+  color:#fff;
+}

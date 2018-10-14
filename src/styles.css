@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+.col.custom-col {
+  -ms-flex:0 0 20%;
+  flex:0 0 20%;
+  height:inherit;
+  border-radius:5px;
+}
+
