@@ -1,8 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SummaryComponent } from './summary.component';
-import {Card} from '../../../../model/card.model';
-import {AppComponent} from '../../../../app.component';
+import {Card} from '../../../../model/card/card.model';
 
 describe('SummaryComponent', () => {
   let component: SummaryComponent;
@@ -27,9 +25,9 @@ describe('SummaryComponent', () => {
   });
 
   it('should have header', () => {
-     expect(component).toBeTruthy();
-     const compiled = fixture.debugElement.nativeElement;
-     expect(compiled.querySelector('h4.card-title').textContent).toContain('header');
+    expect(component).toBeTruthy();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h4.card-title').textContent).toContain('header');
     expect(compiled.querySelector('h6').textContent).toContain('summary');
     expect(compiled.querySelector('p').textContent).toContain('description');
 

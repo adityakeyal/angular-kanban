@@ -1,8 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListComponent } from './list.component';
-import {Card} from '../../../model/card.model';
+
 import {SummaryComponent} from '../card/summary/summary.component';
+import {Card} from '../../../model/card/card.model';
+import {List} from '../../../model/list/list.model';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -18,11 +20,13 @@ describe('ListComponent', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(ListComponent);
       component = fixture.componentInstance;
-      component.cards = [new Card('', '', '', '')]
+      component.list = new List();
+      component.list.name = 'List Name';
+      component.list.cards = [new Card('1', 'Header', 'Summary', 'This is a description')];
       fixture.detectChanges();
     });
 
   it('should create', () => {
-    // expect(component).toBeTruthy();
+     expect(component).toBeTruthy();
   });
 });

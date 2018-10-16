@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Card} from '../../../model/card.model';
+import {Component, Input, OnInit} from '@angular/core';
+import {Card} from '../../../model/card/card.model';
+import {List, ListInterface} from '../../../model/list/list.model';
 
 @Component({
   selector: 'app-list',
@@ -8,15 +9,10 @@ import {Card} from '../../../model/card.model';
 })
 export class ListComponent implements OnInit {
 
-  cards: Card[]
+  @Input() list: ListInterface;
 
   constructor() { }
 
-  ngOnInit() {
-    this.cards = [
-      new Card('1', 'CUSLONE-1306', 'Summary-1306', 'Desription for 1306'),
-      new Card('2', 'CUSLONE-999', 'Summary-999', 'Desription for 999'),
-    ];
-  }
+  ngOnInit() { }
 
 }
