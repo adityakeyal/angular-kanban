@@ -17,15 +17,9 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
 
-    // const rel27List = new List();
-    // rel27List.id = '1';
-    // rel27List.name = 'REL-27';
-    //
-    // const rel28List = new List();
-    // rel28List.id = '2';
-    // rel28List.name = 'REL-28';
-    //
-    // this.lists = [rel27List , rel28List];
+    this.lists = [];
+
+    // ideally retrive and initialize from some storage.
 
   }
 
@@ -33,6 +27,9 @@ export class BoardComponent implements OnInit {
     const newList: ListInterface = new List();
     newList.name = nameOfList;
     newList.position = this.lists.length + 1;
+    if (this.lists === undefined) {
+      this.lists = [];
+    }
     this.lists.push(newList);
   }
 }

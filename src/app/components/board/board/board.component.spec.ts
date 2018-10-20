@@ -53,4 +53,31 @@ describe('BoardComponent', () => {
     component.addList('Name of List');
     expect(component.lists.length).toEqual( 1);
   });
+
+  it('should call add list on click', () => {
+    const bannerDe: DebugElement = fixture.debugElement;
+    const bannerEl: HTMLElement = bannerDe.nativeElement;
+
+    spyOn(component, 'addList');
+
+    expect(bannerEl.querySelector('h6.add-new-list')).toBeTruthy();
+
+    const addNewListBanner: HTMLElement = bannerEl.querySelector('h6.add-new-list');
+    addNewListBanner.click();
+    // alternative: addNewListBanner.dispatchEvent(new Event('click'))
+    expect(component.addList).toHaveBeenCalled();
+
+  });
+
+  it('list should be incremented', () => {
+    const bannerDe: DebugElement = fixture.debugElement;
+    const bannerEl: HTMLElement = bannerDe.nativeElement;
+
+    expect(bannerEl.querySelector('h6.add-new-list')).toBeTruthy();
+    const addNewListBanner: HTMLElement = bannerEl.querySelector('h6.add-new-list');
+    addNewListBanner.click();
+    expect(component.lists.length).toEqual(1);
+
+  });
+
 });
