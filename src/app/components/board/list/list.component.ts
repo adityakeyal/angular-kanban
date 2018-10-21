@@ -1,5 +1,6 @@
 import {Component, ElementRef, HostListener, Input, OnInit} from '@angular/core';
 import {ListInterface} from '../../../model/list/list.model';
+import {Card} from '../../../model/card/card.model';
 
 @Component({
   selector: 'app-list',
@@ -21,6 +22,8 @@ export class ListComponent implements OnInit {
   ngOnInit() {
 
     this.headingEditMode = false;
+    console.log(this.list);
+    this.list.cards = [];
   }
 
   clickedInside($event: Event) {
@@ -40,6 +43,11 @@ export class ListComponent implements OnInit {
       $event.stopPropagation();  // <- that will stop propagation on lower layers
     }
 
+  }
+
+
+  addNewCard() {
+    this.list.cards.push(new Card('', 'header', 'summary', 'sample desc'));
   }
 
 

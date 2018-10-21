@@ -51,9 +51,7 @@ describe('ListComponent', () => {
     expect(addNewCardText).toEqual('Add new item...');
   });
 
-  it('heading should be editable on click', () => {
-    const addNewCardText = nativeElement.querySelector('.add-new-card').innerHTML;
-    expect(addNewCardText).toEqual('Add new item...');
+  xit('heading should be editable on click', () => {
   });
 
   it('should call method clickedOutside on click event', () => {
