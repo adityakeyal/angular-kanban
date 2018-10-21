@@ -5,7 +5,7 @@ import {ListComponent} from '../list/list.component';
 import {SummaryComponent} from '../card/summary/summary.component';
 import {List} from '../../../model/list/list.model';
 import {DebugElement} from '@angular/core';
-import {element} from 'protractor';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 describe('BoardComponent', () => {
   let component: BoardComponent;
@@ -13,7 +13,8 @@ describe('BoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BoardComponent, ListComponent, SummaryComponent ]
+      declarations: [ BoardComponent, ListComponent, SummaryComponent ],
+      imports: [FormsModule, ReactiveFormsModule ]
     })
     .compileComponents();
   }));

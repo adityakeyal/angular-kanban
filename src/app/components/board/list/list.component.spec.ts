@@ -5,6 +5,8 @@ import { ListComponent } from './list.component';
 import {SummaryComponent} from '../card/summary/summary.component';
 import {Card} from '../../../model/card/card.model';
 import {List} from '../../../model/list/list.model';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -13,6 +15,7 @@ describe('ListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ListComponent , SummaryComponent],
+      imports: [ReactiveFormsModule, FormsModule]
     })
     .compileComponents();
   }));
@@ -47,6 +50,22 @@ describe('ListComponent', () => {
     const addNewCardText = nativeElement.querySelector('.add-new-card').innerHTML;
     expect(addNewCardText).toEqual('Add new item...');
   });
+
+  it('heading should be editable on click', () => {
+    const addNewCardText = nativeElement.querySelector('.add-new-card').innerHTML;
+    expect(addNewCardText).toEqual('Add new item...');
+  });
+
+  it('should call method clickedOutside on click event', () => {
+
+    const spyComponent = spyOn(component, 'clickedOutside');
+    document.dispatchEvent(new Event('click'));
+    expect(spyComponent).toHaveBeenCalledTimes(1);
+
+  });
+
+
+
 
 
 });
