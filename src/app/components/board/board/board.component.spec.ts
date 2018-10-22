@@ -6,6 +6,7 @@ import {SummaryComponent} from '../card/summary/summary.component';
 import {List} from '../../../model/list/list.model';
 import {DebugElement} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {InlineEditComponent} from '../../common/form/inline-edit/inline-edit.component';
 
 describe('BoardComponent', () => {
   let component: BoardComponent;
@@ -13,7 +14,7 @@ describe('BoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BoardComponent, ListComponent, SummaryComponent ],
+      declarations: [ BoardComponent, ListComponent, SummaryComponent , InlineEditComponent],
       imports: [FormsModule, ReactiveFormsModule ]
     })
     .compileComponents();

@@ -6,6 +6,7 @@ import {SummaryComponent} from '../card/summary/summary.component';
 import {Card} from '../../../model/card/card.model';
 import {List} from '../../../model/list/list.model';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {InlineEditComponent} from '../../common/form/inline-edit/inline-edit.component';
 
 
 describe('ListComponent', () => {
@@ -14,7 +15,7 @@ describe('ListComponent', () => {
   let nativeElement: HTMLElement;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListComponent , SummaryComponent],
+      declarations: [ ListComponent , SummaryComponent, InlineEditComponent],
       imports: [ReactiveFormsModule, FormsModule]
     })
     .compileComponents();
@@ -27,8 +28,9 @@ describe('ListComponent', () => {
 
       component.list = new List();
       component.list.name = 'List Name';
-      component.list.cards = [new Card('1', 'Header', 'Summary', 'This is a description')];
+
       fixture.detectChanges();
+      component.list.cards = [new Card('1', 'Header', 'Summary', 'This is a description')];
     });
 
   it('should create', () => {
@@ -51,30 +53,7 @@ describe('ListComponent', () => {
     expect(addNewCardText).toEqual('Add new item...');
   });
 
-  xit('heading should be editable on click', () => {
+  xit('heading should be of type inline-edit', () => {
   });
-
-  it('should call method clickedOutside on click event', () => {
-
-    const spyComponent = spyOn(component, 'clickedOutside');
-    document.dispatchEvent(new Event('click'));
-    expect(spyComponent).toHaveBeenCalledTimes(1);
-
-  });
-
-  it('should NOT call method clickedOutside when click event is on title', () => {
-    // component heading is true
-    component.headingEditMode = true;
-    fixture.detectChanges();
-
-    fixture.nativeElement.querySelector('input').dispatchEvent(new Event('click'));
-
-    const spyComponent = spyOn(component, 'clickedOutside');
-    expect(spyComponent).not.toHaveBeenCalled();
-
-  });
-
-
-
 
 });

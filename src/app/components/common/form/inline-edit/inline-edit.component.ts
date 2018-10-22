@@ -7,9 +7,10 @@ import { Component, OnInit, HostListener, ElementRef, Input, Output, EventEmitte
 })
 export class InlineEditComponent implements OnInit {
 
-  private isEditable = false;
+  isEditable = false;
 
   @Input() private name;
+  @Input() private editableClass = 'inline';
 
   @Output() private nameChange = new EventEmitter<string>();
 

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SummaryComponent } from './summary.component';
 import {Card} from '../../../../model/card/card.model';
+import {InlineEditComponent} from '../../../common/form/inline-edit/inline-edit.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 describe('SummaryComponent', () => {
   let component: SummaryComponent;
@@ -8,7 +10,8 @@ describe('SummaryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SummaryComponent ]
+      declarations: [ SummaryComponent , InlineEditComponent ],
+      imports: [ FormsModule, ReactiveFormsModule ]
     })
     .compileComponents();
   }));
@@ -27,9 +30,9 @@ describe('SummaryComponent', () => {
   it('should have header', () => {
     expect(component).toBeTruthy();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h4.card-title').textContent).toContain('header');
+    expect(compiled.querySelector('inline-edit').textContent).toContain('header');
     expect(compiled.querySelector('h6').textContent).toContain('summary');
-    expect(compiled.querySelector('p').textContent).toContain('description');
+
 
 
   });

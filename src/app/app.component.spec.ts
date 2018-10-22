@@ -6,6 +6,7 @@ import {BoardComponent} from './components/board/board/board.component';
 import {SummaryComponent} from './components/board/card/summary/summary.component';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
+import {InlineEditComponent} from './components/common/form/inline-edit/inline-edit.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -19,6 +20,7 @@ describe('AppComponent', () => {
         SummaryComponent,
         ListComponent,
         BoardComponent,
+        InlineEditComponent
       ],
     }).compileComponents();
   }));
