@@ -1,11 +1,11 @@
 import { Component, OnInit, HostListener, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'inine-edit',
-  templateUrl: './inine-edit.component.html',
-  styleUrls: ['./inine-edit.component.css']
+  selector: 'inline-edit',
+  templateUrl: './inline-edit.component.html',
+  styleUrls: ['./inline-edit.component.css']
 })
-export class InineEditComponent implements OnInit {
+export class InlineEditComponent implements OnInit {
 
   private isEditable = false;
 

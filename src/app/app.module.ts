@@ -10,7 +10,7 @@ import { BoardComponent } from './components/board/board/board.component';
 import { HeaderComponent } from './components/common/header/header.component';
 import { ListComponent } from './components/board/list/list.component';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
-import { InineEditComponent } from './components/common/form/inine-edit/inine-edit.component';
+import { InlineEditComponent } from './components/common/form/inline-edit/inline-edit.component';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import { InineEditComponent } from './components/common/form/inine-edit/inine-ed
     BoardComponent,
     HeaderComponent,
     ListComponent,
-    InineEditComponent
+    InlineEditComponent
   ],
   imports: [
     BrowserModule,
