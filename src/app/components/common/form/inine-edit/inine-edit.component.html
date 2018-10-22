@@ -1,0 +1,4 @@
+<div>
+  <h1 style="font-size:16px;" *ngIf="!isEditable" class="list-name" (click)="clickedInside($event)">{{name}}</h1>
+  <h1 style="font-size:16px;" class="editable-list-name" *ngIf="isEditable" ><input type="text" [(ngModel)]="name" /> </h1>
+</div>
