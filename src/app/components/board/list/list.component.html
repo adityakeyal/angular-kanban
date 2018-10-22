@@ -1,16 +1,8 @@
 
 <div class="col custom-col">
-  <!-- <h1 style="font-size:16px;" *ngIf="!headingEditMode" class="list-name" (click)="clickedInside($event)">{{list.name}}</h1>
-  <h1 style="font-size:16px;" class="editable-list-name" *ngIf="headingEditMode" ><input type="text" [(ngModel)]="list.name" /> </h1> -->
-
   <inline-edit [(name)]="list.name" ></inline-edit>
-
-
   <!-- List Card Starts -->
   <app-card-summary *ngFor="let card of this.list.cards" [card]="card"></app-card-summary>
-
   <!-- List Card Ends -->
-
-      {{list.name}}
   <h6 class="text-center add-new-card" (click)="addNewCard()" >Add new item...</h6>
 </div>

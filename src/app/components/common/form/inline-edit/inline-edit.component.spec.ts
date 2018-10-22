@@ -80,4 +80,9 @@ describe('InlineEditComponent', () => {
     expect(className).toEqual('editable-myclass');
   });
 
+  it(' should set editabe as false' , () => {
+    component.isEditable = true;
+    component.checkIfEnterPressed(new KeyboardEvent('keypress', { 'key' : 'Enter'}));
+  });
+
 });

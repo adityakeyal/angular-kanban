@@ -1,4 +1,4 @@
 <div>
-  <h1 style="font-size:16px;" *ngIf="!isEditable" class="{{editableClass}}" (click)="clickedInside($event)">{{name}}</h1>
-  <h1 style="font-size:16px;" class="editable-{{editableClass}}" *ngIf="isEditable" ><input type="text" [(ngModel)]="name" /> </h1>
+  <h1 style="font-size:16px;" *ngIf="!isEditable" class="{{editableClass}}" (click)="clickedInside($event)" >{{name}}</h1>
+  <h1 style="font-size:16px;" class="editable-{{editableClass}}" *ngIf="isEditable" ><input type="text" [(ngModel)]="name"  (keyup.enter)="isEditable=false" /> </h1>
 </div>
