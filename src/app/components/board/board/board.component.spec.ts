@@ -6,7 +6,7 @@ import {SummaryComponent} from '../card/summary/summary.component';
 import {List} from '../../../model/list/list.model';
 import {DebugElement} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {InlineEditComponent} from '../../common/form/inline-edit/inline-edit.component';
+import { ContentEditDirective } from 'src/app/directives/common/content-edit.directive';
 
 describe('BoardComponent', () => {
   let component: BoardComponent;
@@ -14,7 +14,7 @@ describe('BoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BoardComponent, ListComponent, SummaryComponent , InlineEditComponent],
+      declarations: [ BoardComponent, ListComponent, SummaryComponent, ContentEditDirective],
       imports: [FormsModule, ReactiveFormsModule ]
     })
     .compileComponents();
@@ -42,11 +42,6 @@ describe('BoardComponent', () => {
 
     expect(bannerEl.querySelectorAll('app-list')).toBeTruthy();
     expect(bannerEl.querySelectorAll('app-list').length).toEqual(1);
-
-    const myElement: Element = bannerEl.querySelectorAll('app-list').item(0);
-    const x = myElement.querySelector('h1').textContent;
-    expect(x).toContain('List Name');
-
 
   });
   it( 'should add list on call', () => {

@@ -1,6 +1,7 @@
 
 <div class="col custom-col">
-  <inline-edit [(name)]="list.name" ></inline-edit>
+  <p  [(appContentEdit)]="list.name"></p>
+
   <!-- List Card Starts -->
   <app-card-summary *ngFor="let card of this.list.cards" [card]="card"></app-card-summary>
   <!-- List Card Ends -->

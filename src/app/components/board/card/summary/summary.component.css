@@ -5,9 +5,10 @@
 }
 
 .card-title {
-
+  font-size: 12px;
   margin-bottom: .35rem;
 }
+
 .card-body {
   max-height: 160px;
 }
@@ -21,5 +22,3 @@ p.card-text {
 .text-muted {
   font-size: 10px;
 }
-
-

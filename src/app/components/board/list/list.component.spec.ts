@@ -6,7 +6,7 @@ import {SummaryComponent} from '../card/summary/summary.component';
 import {Card} from '../../../model/card/card.model';
 import {List} from '../../../model/list/list.model';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {InlineEditComponent} from '../../common/form/inline-edit/inline-edit.component';
+import { ContentEditDirective } from 'src/app/directives/common/content-edit.directive';
 
 
 describe('ListComponent', () => {
@@ -15,7 +15,8 @@ describe('ListComponent', () => {
   let nativeElement: HTMLElement;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListComponent , SummaryComponent, InlineEditComponent],
+      declarations: [ ListComponent , SummaryComponent,
+        ContentEditDirective ],
       imports: [ReactiveFormsModule, FormsModule]
     })
     .compileComponents();
@@ -53,7 +54,7 @@ describe('ListComponent', () => {
     expect(addNewCardText).toEqual('Add new item...');
   });
 
-  xit('heading should be of type inline-edit', () => {
+  xit('heading should be of type ', () => {
   });
 
 });
