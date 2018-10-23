@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/common/header/header.component';
 import { ListComponent } from './components/board/list/list.component';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { InlineEditComponent } from './components/common/form/inline-edit/inline-edit.component';
+import { ContentEditDirective } from './directives/common/content-edit.directive';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { InlineEditComponent } from './components/common/form/inline-edit/inline
     BoardComponent,
     HeaderComponent,
     ListComponent,
-    InlineEditComponent
+    InlineEditComponent,
+    ContentEditDirective
   ],
   imports: [
     BrowserModule,

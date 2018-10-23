@@ -20,7 +20,7 @@ export class InlineEditComponent implements OnInit {
   }
 
 
-  clickedInside($event: Event) {
+  /*clickedInside($event: Event) {
 
     this.isEditable = true;
     $event.preventDefault();
@@ -38,6 +38,6 @@ export class InlineEditComponent implements OnInit {
       $event.stopPropagation();  // <- that will stop propagation on lower layers
     }
 
-  }
+  }*/
 
 }

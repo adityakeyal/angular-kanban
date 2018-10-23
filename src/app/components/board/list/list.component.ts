@@ -15,36 +15,14 @@ export class ListComponent implements OnInit {
 
   @Input() list: ListInterface;
 
-  headingEditMode = false;
+  // headingEditMode = false;
 
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
 
-    this.headingEditMode = false;
-    console.log(this.list);
     this.list.cards = [];
   }
-
-  clickedInside($event: Event) {
-
-    this.headingEditMode = true;
-    $event.preventDefault();
-    $event.stopPropagation();  // <- that will stop propagation on lower layers
-
-  }
-
-  @HostListener('document:click', ['$event']) clickedOutside($event) {
-    const targetElement = $event.target as HTMLElement;
-
-    if (targetElement && !this.elementRef.nativeElement.contains(targetElement)) {
-      this.headingEditMode = false;
-      $event.preventDefault();
-      $event.stopPropagation();  // <- that will stop propagation on lower layers
-    }
-
-  }
-
 
   addNewCard() {
     this.list.cards.push(new Card('', 'header', 'summary', 'sample desc'));

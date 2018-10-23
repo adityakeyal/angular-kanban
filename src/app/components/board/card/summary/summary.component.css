@@ -5,7 +5,7 @@
 }
 
 .card-title {
-  font-size: 12px;
+
   margin-bottom: .35rem;
 }
 .card-body {
@@ -21,4 +21,5 @@ p.card-text {
 .text-muted {
   font-size: 10px;
 }
+
 

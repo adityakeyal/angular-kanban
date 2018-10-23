@@ -58,7 +58,7 @@ describe('InlineEditComponent', () => {
     fixture.detectChanges();
     const className = fixture.nativeElement.querySelector('h1').className;
     expect(className).toBeTruthy();
-    expect(className).toEqual('editable-inline');
+    expect(className).toEqual('editable inline');
   });
 
   it('class as per input provided', () => {
@@ -77,12 +77,25 @@ describe('InlineEditComponent', () => {
     fixture.detectChanges();
     const className = fixture.nativeElement.querySelector('h1').className;
     expect(className).toBeTruthy();
-    expect(className).toEqual('editable-myclass');
+    expect(className).toEqual('editable myclass');
   });
 
-  it(' should set editabe as false' , () => {
+  it(' should set editable as false on Enter' , () => {
     component.isEditable = true;
-    component.checkIfEnterPressed(new KeyboardEvent('keypress', { 'key' : 'Enter'}));
+    fixture.detectChanges();
+    const inputElement = fixture.nativeElement.querySelector('input');
+    inputElement.dispatchEvent(new KeyboardEvent('keyup', { 'key' : 'Enter'}));
+    expect(component.isEditable).toEqual(false);
+  });
+
+  it('should NOT set editable as false on other key' , () => {
+    component.isEditable = true;
+    fixture.detectChanges();
+    const inputElement = fixture.nativeElement.querySelector('input');
+    inputElement.dispatchEvent(new KeyboardEvent('keyup', { 'key' : 'a'}));
+    inputElement.dispatchEvent(new KeyboardEvent('keyup', { 'key' : 'b'}));
+    inputElement.dispatchEvent(new KeyboardEvent('keyup', { 'key' : 'c'}));
+    expect(component.isEditable).toEqual(true);
   });
 
 });
