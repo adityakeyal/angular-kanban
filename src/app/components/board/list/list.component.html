@@ -1,9 +1,11 @@
 
-<div class="col custom-col">
-  <p  [(appContentEdit)]="list.name"></p>
+<div class="col custom-col list-drag-component">
+  <p class="list-name"  [(appContentEdit)]="list.name"></p>
 
   <!-- List Card Starts -->
-  <app-card-summary *ngFor="let card of this.list.cards" [card]="card"></app-card-summary>
+  <div   cdkDropList id="list-one" [cdkDropListConnectedTo]="['list-one']"  >
+    <app-card-summary *ngFor="let card of this.list.cards" [card]="card" cdkDrag [cdkDragData]="card" ></app-card-summary>
+  </div>
   <!-- List Card Ends -->
   <h6 class="text-center add-new-card" (click)="addNewCard()" >Add new item...</h6>
 </div>

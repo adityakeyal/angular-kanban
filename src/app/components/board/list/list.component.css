@@ -19,3 +19,7 @@
   cursor:pointer;
   opacity:0.4;
 }
+
+.list-name{
+  font-weight: bold;
+}

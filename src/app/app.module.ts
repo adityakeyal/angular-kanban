@@ -11,6 +11,9 @@ import { HeaderComponent } from './components/common/header/header.component';
 import { ListComponent } from './components/board/list/list.component';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { ContentEditDirective } from './directives/common/content-edit.directive';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
+
 
 
 @NgModule({
@@ -26,7 +29,8 @@ import { ContentEditDirective } from './directives/common/content-edit.directive
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
