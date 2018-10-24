@@ -16,4 +16,11 @@ export class SummaryComponent implements OnInit {
     // this.card = new Card('', 'CUSLONE-1306', 'Unable to connect to TSD response', 'This is a description');
   }
 
+  identifyCardBeingDragged(dragEvent: DragEvent) {
+    dragEvent.dataTransfer.setData( 'text', JSON.stringify(this.card));
+  }
+
+  allowCardDragToBeDropped($event) {
+    $event.preventDefault();
+  }
 }

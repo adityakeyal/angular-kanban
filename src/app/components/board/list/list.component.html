@@ -1,5 +1,5 @@
 
-<div class="col custom-col list-drag-component">
+<div class="col custom-col list-drag-component" (drop)="allowCardReplacement($event)" >
   <p class="list-name"  [(appContentEdit)]="list.name"></p>
 
   <!-- List Card Starts -->

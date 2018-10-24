@@ -29,4 +29,11 @@ export class ListComponent implements OnInit {
   }
 
 
+  allowCardReplacement(dragEvent: DragEvent) {
+    const data = dragEvent.dataTransfer.getData('text');
+    console.log(data);
+    console.log(dragEvent);
+
+
+  }
 }
