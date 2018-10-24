@@ -3,8 +3,8 @@
   <p class="list-name"  [(appContentEdit)]="list.name"></p>
 
   <!-- List Card Starts -->
-  <div   cdkDropList id="list-one" [cdkDropListConnectedTo]="['list-one']"  >
-    <app-card-summary *ngFor="let card of this.list.cards" [card]="card" cdkDrag [cdkDragData]="card" ></app-card-summary>
+  <div    id="list-one"  >
+    <app-card-summary *ngFor="let card of this.list.cards" [card]="card" ></app-card-summary>
   </div>
   <!-- List Card Ends -->
   <h6 class="text-center add-new-card" (click)="addNewCard()" >Add new item...</h6>
