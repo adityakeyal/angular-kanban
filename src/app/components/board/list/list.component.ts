@@ -15,6 +15,8 @@ export class ListComponent implements OnInit {
 
   @Input() list: ListInterface;
 
+  private cardCount = 0;
+
   // headingEditMode = false;
 
   constructor(private elementRef: ElementRef) { }
@@ -25,15 +27,26 @@ export class ListComponent implements OnInit {
   }
 
   addNewCard() {
-    this.list.cards.push(new Card('', 'header', 'summary', 'sample desc'));
+    this.list.cards.push(new Card(this.cardCount+++'', 'header'+this.cardCount, 'summary'+this.cardCount, 'sample desc'));
   }
 
 
   allowCardReplacement(dragEvent: DragEvent) {
+    dragEvent.dataTransfer.dropEffect='move';
+    dragEvent.preventDefault();
+  }
+
+
+  dropCard(dragEvent: DragEvent){
+
     const data = dragEvent.dataTransfer.getData('text');
-    console.log(data);
-    console.log(dragEvent);
-
-
+    
+    const cardId = document.elementsFromPoint(dragEvent.x,dragEvent.y)[1].id;
+    const id = JSON.parse(data).id;
+    let removedCard = null;
+    this.list.cards.forEach((x,i)=> { if(x.id === id){
+      removedCard = this.list.cards.splice(i,1);
+    } })
+     this.list.cards.splice(parseInt(cardId),0,...removedCard);
   }
 }

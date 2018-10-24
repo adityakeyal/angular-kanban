@@ -17,10 +17,14 @@ export class SummaryComponent implements OnInit {
   }
 
   identifyCardBeingDragged(dragEvent: DragEvent) {
+    dragEvent.dataTransfer.effectAllowed='move'
+    dragEvent.dataTransfer.dropEffect='move'
+
     dragEvent.dataTransfer.setData( 'text', JSON.stringify(this.card));
   }
 
-  allowCardDragToBeDropped($event) {
-    $event.preventDefault();
+  allowCardDragToBeDropped(dragEvent: DragEvent) {
+    dragEvent.dataTransfer.dropEffect='move'
+    dragEvent.preventDefault();
   }
 }
