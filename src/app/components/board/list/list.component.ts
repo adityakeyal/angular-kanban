@@ -1,4 +1,5 @@
-import {Component, ElementRef, HostListener, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, Output, EventEmitter, Inject} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
 import {ListInterface} from '../../../model/list/list.model';
 import {Card} from '../../../model/card/card.model';
 import { MovementIntf, Movement } from 'src/app/model/card/movement';
@@ -22,7 +23,7 @@ export class ListComponent implements OnInit {
 
   private cardCount = 0;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef , @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
 
@@ -42,19 +43,15 @@ export class ListComponent implements OnInit {
 
   dropCard(dragEvent: DragEvent) {
 
-    const data = JSON.parse(dragEvent.dataTransfer.getData('text'));
-    // { 'listIndex' : this.listIndex, 'cardIndex' : this.cardIndex };
     
-    const elements: Element[] = document.elementsFromPoint(dragEvent.x, dragEvent.y);
-
-    const cardElementBeingDroppedOn = elements.find( x => x.className==='card');
-    const listIndexDroppedOn = parseInt(cardElementBeingDroppedOn.getAttribute('listIndex'));
-    const cardIndexDroppedOn = parseInt(cardElementBeingDroppedOn.getAttribute('cardIndex'));
-
+    const data = JSON.parse(dragEvent.dataTransfer.getData('text'));
+    const elements: Element[] = this.document.elementsFromPoint(dragEvent.x, dragEvent.y);
+    const cardElementBeingDroppedOn = elements.find( x => x.tagName.toLowerCase()==='app-card-summary');
+    const listElementBeingDroppedOn = elements.find( x => x.tagName.toLowerCase()==='app-list');
+    const listIndexDroppedOn = parseInt(listElementBeingDroppedOn.getAttribute('listIndex'));
+    const cardIndexDroppedOn  = cardElementBeingDroppedOn === undefined ? undefined : parseInt(cardElementBeingDroppedOn.getAttribute('cardIndex'));
     const listIndexDragged = parseInt(data.listIndex);
     const cardIndexDragged = parseInt(data.cardIndex);
-
-
 
     if(listIndexDragged === listIndexDroppedOn){
         //same list just re-organize the cards
@@ -62,7 +59,6 @@ export class ListComponent implements OnInit {
         this.list.cards.splice(cardIndexDroppedOn , 0 , ...cardDragged);
     }
     else {
-
       this.moveCardAcrossList.emit(new Movement(listIndexDragged, listIndexDroppedOn , cardIndexDragged , cardIndexDroppedOn));
     }
 

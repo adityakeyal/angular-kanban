@@ -4,7 +4,7 @@
 
   <!-- List Card Starts -->
   <div    id="list-one"  >
-    <app-card-summary *ngFor="let card of this.list.cards;let i = index" [card]="card" [listIndex]="listIndex" [cardIndex]="i" ></app-card-summary>
+    <app-card-summary  *ngFor="let card of this.list.cards;let i = index" [card]="card" [listIndex]="listIndex" [cardIndex]="i" attr.cardIndex="{{i}}" ></app-card-summary>
   </div>
   <!-- List Card Ends -->
   <h6 class="text-center add-new-card" (click)="addNewCard()" >Add new item...</h6>
