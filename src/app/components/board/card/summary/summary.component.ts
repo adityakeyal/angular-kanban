@@ -9,6 +9,9 @@ import {Card} from '../../../../model/card/card.model';
 export class SummaryComponent implements OnInit {
 
    @Input() card: Card;
+  @Input() listIndex: number;
+  @Input() cardIndex: number;
+
 
   constructor() { }
 
@@ -17,14 +20,14 @@ export class SummaryComponent implements OnInit {
   }
 
   identifyCardBeingDragged(dragEvent: DragEvent) {
-    dragEvent.dataTransfer.effectAllowed='move'
-    dragEvent.dataTransfer.dropEffect='move'
+    dragEvent.dataTransfer.effectAllowed = 'move'
+    dragEvent.dataTransfer.dropEffect= 'move'
 
     dragEvent.dataTransfer.setData( 'text', JSON.stringify(this.card));
   }
 
   allowCardDragToBeDropped(dragEvent: DragEvent) {
-    dragEvent.dataTransfer.dropEffect='move'
+    dragEvent.dataTransfer.dropEffect= 'move'
     dragEvent.preventDefault();
   }
 }
