@@ -39,13 +39,33 @@ export class ListComponent implements OnInit {
 
   dropCard(dragEvent: DragEvent) {
 
-    const data = dragEvent.dataTransfer.getData('text');
-    const cardId = document.elementsFromPoint(dragEvent.x, dragEvent.y)[1].id;
-    const id = JSON.parse(data).id;
-    let removedCard = null;
-    this.list.cards.forEach((x, i) => { if ( x.id === id) {
-      removedCard = this.list.cards.splice(i, 1);
-    } })
-     this.list.cards.splice( parseInt(cardId, 10), 0, ...removedCard);
+    const data = JSON.parse(dragEvent.dataTransfer.getData('text'));
+    // { 'listIndex' : this.listIndex, 'cardIndex' : this.cardIndex };
+    
+    const elements: Element[] = document.elementsFromPoint(dragEvent.x, dragEvent.y);
+
+    const cardElementBeingDroppedOn = elements.find( x => x.className==='card');
+    const listIndexDroppedOn = parseInt(cardElementBeingDroppedOn.getAttribute('listIndex'));
+    const cardIndexDroppedOn = parseInt(cardElementBeingDroppedOn.getAttribute('cardIndex'));
+
+    const listIndexDragged = parseInt(data.listIndex);
+    const cardIndexDragged = parseInt(data.cardIndex);
+
+
+
+    if(listIndexDragged === listIndexDroppedOn){
+        //same list just re-organize the cards
+        const cardDragged = this.list.cards.splice(cardIndexDragged,1);
+        this.list.cards.splice(cardIndexDroppedOn , 0 , ...cardDragged);
+    }
+
+
+    // const cardId = [1].id;
+    // const id = JSON.parse(data).id;
+    // let removedCard = null;
+    // .forEach((x, i) => { if ( x.id === id) {
+    //   removedCard = this.list.cards.splice(i, 1);
+    // } })
+    //  this.list.cards.splice( parseInt(cardId, 10), 0, ...removedCard);
   }
 }

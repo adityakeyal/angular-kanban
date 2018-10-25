@@ -16,14 +16,17 @@ export class SummaryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // this.card = new Card('', 'CUSLONE-1306', 'Unable to connect to TSD response', 'This is a description');
+    
   }
 
   identifyCardBeingDragged(dragEvent: DragEvent) {
     dragEvent.dataTransfer.effectAllowed = 'move'
     dragEvent.dataTransfer.dropEffect= 'move'
-
-    dragEvent.dataTransfer.setData( 'text', JSON.stringify(this.card));
+    const transferObject = {
+      'listIndex' : this.listIndex,
+      'cardIndex' : this.cardIndex
+    };
+    dragEvent.dataTransfer.setData( 'text', JSON.stringify(transferObject));
   }
 
   allowCardDragToBeDropped(dragEvent: DragEvent) {
