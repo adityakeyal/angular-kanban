@@ -2,12 +2,15 @@
   margin-bottom: 10px;
   width: 230px;
   max-height: 150px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
 }
 
 .card-title {
   font-size: 12px;
-  margin-bottom: .35rem;
+  margin-bottom: .35rem;  
 }
+
+
 
 .card-body {
   max-height: 160px;

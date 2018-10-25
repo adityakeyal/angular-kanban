@@ -1,6 +1,8 @@
-import {Component, ElementRef, HostListener, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {ListInterface} from '../../../model/list/list.model';
 import {Card} from '../../../model/card/card.model';
+import { MovementIntf, Movement } from 'src/app/model/card/movement';
+
 
 @Component({
   selector: 'app-list',
@@ -15,6 +17,7 @@ export class ListComponent implements OnInit {
 
   @Input() list: ListInterface;
   @Input() listIndex: number;
+  @Output() moveCardAcrossList: EventEmitter<MovementIntf> = new EventEmitter<MovementIntf>();
 
 
   private cardCount = 0;
@@ -58,14 +61,10 @@ export class ListComponent implements OnInit {
         const cardDragged = this.list.cards.splice(cardIndexDragged,1);
         this.list.cards.splice(cardIndexDroppedOn , 0 , ...cardDragged);
     }
+    else {
 
+      this.moveCardAcrossList.emit(new Movement(listIndexDragged, listIndexDroppedOn , cardIndexDragged , cardIndexDroppedOn));
+    }
 
-    // const cardId = [1].id;
-    // const id = JSON.parse(data).id;
-    // let removedCard = null;
-    // .forEach((x, i) => { if ( x.id === id) {
-    //   removedCard = this.list.cards.splice(i, 1);
-    // } })
-    //  this.list.cards.splice( parseInt(cardId, 10), 0, ...removedCard);
   }
 }

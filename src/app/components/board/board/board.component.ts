@@ -1,5 +1,6 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {List, ListInterface} from '../../../model/list/list.model';
+import { MovementIntf } from 'src/app/model/card/movement';
 
 
 
@@ -31,5 +32,10 @@ export class BoardComponent implements OnInit {
       this.lists = [];
     }
     this.lists.push(newList);
+  }
+
+  moveCardAcrossList(movementInformation: MovementIntf){
+    const cardMoved = this.lists[movementInformation.fromListIdx].cards.splice(movementInformation.fromCardIdx,1);
+    this.lists[movementInformation.toListIdx].cards.splice(movementInformation.toCardIdx , 0 , ...cardMoved);
   }
 }
