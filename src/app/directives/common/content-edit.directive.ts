@@ -4,66 +4,64 @@ import { Directive, HostListener, ElementRef, Renderer, Input, EventEmitter, Out
   selector: '[appContentEdit]'
 })
 export class ContentEditDirective implements OnInit {
-  
 
 
-  @Input('appContentEdit') content: string;
-  @Output('appContentEditChange') contentChange: EventEmitter<string> = new EventEmitter<string>();
 
-  private ignoreChange =false;
+  @Input() appContentEdit: string;
+  @Output() appContentEditChange: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private el: ElementRef, private renderer: Renderer , private rendered2: Renderer2) { 
-   
+  private ignoreChange = false;
+
+  constructor(private el: ElementRef, private renderer2: Renderer2) {
   }
 
 
   ngOnInit(): void {
-    this.makeContentEditable()
+    this.makeContentEditable();
   }
 
   // if you press enter then move out of editable mode
 
   @HostListener('keydown.enter', [] )
-  exitContentEditable($event){
-    this.renderer.invokeElementMethod(this.el.nativeElement,'blur');
+  exitContentEditable($event) {
+    this.el.nativeElement.focus();
     return false;
   }
 
   @HostListener('keydown.escape', [] )
-  exitContentEditableWithoutChanges($event){
+  exitContentEditableWithoutChanges($event) {
     this.ignoreChange = true;
-    this.renderer.invokeElementMethod(this.el.nativeElement,'blur');
+    this.el.nativeElement.blur();
     return false;
   }
 
 
-  @HostListener('blur',[])
-  propagateChange(){
-    if(!this.ignoreChange){
-      this.contentChange.emit(this.el.nativeElement.innerText);
-    }else{
-      this.el.nativeElement.innerText=this.content;
+  @HostListener('blur', [])
+  propagateChange() {
+    if (!this.ignoreChange) {
+      this.appContentEditChange.emit(this.el.nativeElement.innerText);
+    } else {
+      this.el.nativeElement.innerText = this.appContentEdit;
     }
     this.ignoreChange = false;
     this.exitChange();
   }
 
-  exitChange(){
-    this.renderer.setElementAttribute(this.el.nativeElement,'contenteditable','false');
-    this.rendered2.removeClass(this.el.nativeElement,'inline-edit');
+  exitChange() {
+    this.renderer2.setAttribute(this.el.nativeElement, 'contenteditable', 'false');
+    this.renderer2.removeClass(this.el.nativeElement, 'inline-edit');
   }
 
 
 
 
-  makeContentEditable(){
-      this.renderer.createText(this.el.nativeElement,this.content);
-      
-      this.renderer.listen(this.el.nativeElement,'dblclick',() =>{
-        this.renderer.setElementAttribute(this.el.nativeElement,'contenteditable','true');
-        this.rendered2.addClass(this.el.nativeElement,'inline-edit');
+  makeContentEditable() {
+      this.renderer2.appendChild( this.el.nativeElement, this.renderer2.createText(this.appContentEdit));
+      this.renderer2.listen(this.el.nativeElement, 'dblclick', () => {
+        this.renderer2.setAttribute(this.el.nativeElement, 'contenteditable', 'true');
+        this.renderer2.addClass(this.el.nativeElement, 'inline-edit');
         this.el.nativeElement.focus();
-      })
+      });
 
   }
 
