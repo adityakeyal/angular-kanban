@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/common/header/header.component';
 import { ListComponent } from './components/board/list/list.component';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { ContentEditDirective } from './directives/common/content-edit.directive';
+import {LocalService} from './service/board/local/local.service';
 
 
 
@@ -31,7 +32,7 @@ import { ContentEditDirective } from './directives/common/content-edit.directive
     ReactiveFormsModule,
 
   ],
-  providers: [],
+  providers: [ LocalService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

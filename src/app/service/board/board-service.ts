@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {BoardModel} from '../../model/board/board.model';
+import {LocalService} from './local/local.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+
 export abstract class BoardService {
-  abstract saveBoard(board: BoardModel );
+  public abstract saveBoard(board: BoardModel );
+
+  public abstract getBoard(): BoardModel;
 }

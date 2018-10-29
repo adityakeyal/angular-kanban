@@ -11,7 +11,7 @@ export interface ListInterface {
 
 export class List implements ListInterface {
 
-  cards: CardInterface[];
+  cards: CardInterface[] = [];
   id: string;
   name: string;
   position: number;
