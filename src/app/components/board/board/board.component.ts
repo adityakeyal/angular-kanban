@@ -48,4 +48,8 @@ export class BoardComponent implements OnInit {
     boardModel.lists = this.lists;
     this.localService.saveBoard(boardModel);
   }
+
+  deleteList(listIndex: number){
+      this.lists.splice(listIndex,1);
+  }
 }

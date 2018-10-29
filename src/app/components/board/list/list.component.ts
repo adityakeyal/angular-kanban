@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnInit, Output, EventEmitter, Inject} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {ListInterface} from '../../../model/list/list.model';
+import {ListInterface, List} from '../../../model/list/list.model';
 import {Card, CardInterface} from '../../../model/card/card.model';
 import { MovementIntf, Movement } from 'src/app/model/card/movement';
 
@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
   @Input() listIndex: number;
   @Output() moveCardAcrossList: EventEmitter<MovementIntf> = new EventEmitter<MovementIntf>();
   @Output() newCardAdded: EventEmitter<Card> = new EventEmitter<CardInterface>();
-
+  @Output() deleteList: EventEmitter<number> = new EventEmitter<number>();
 
   private cardCount = 0;
 
@@ -40,6 +40,11 @@ export class ListComponent implements OnInit {
   allowCardReplacement(dragEvent: DragEvent) {
     dragEvent.dataTransfer.dropEffect = 'move';
     dragEvent.preventDefault();
+  }
+
+  delete(){
+    this.deleteList.emit(this.listIndex);
+  
   }
 
 
@@ -63,4 +68,7 @@ export class ListComponent implements OnInit {
     }
 
   }
+
+
+  
 }

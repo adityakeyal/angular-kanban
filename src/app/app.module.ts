@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-// import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SummaryComponent } from './components/board/card/summary/summary.component';
 import { DetailComponent } from './components/board/card/detail/detail.component';
@@ -12,6 +11,7 @@ import { ListComponent } from './components/board/list/list.component';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { ContentEditDirective } from './directives/common/content-edit.directive';
 import {LocalService} from './service/board/local/local.service';
+import { ContextMenuComponent } from './components/common/contextmenu/context-menu.component';
 
 
 
@@ -24,7 +24,8 @@ import {LocalService} from './service/board/local/local.service';
     BoardComponent,
     HeaderComponent,
     ListComponent,
-    ContentEditDirective
+    ContentEditDirective,
+    ContextMenuComponent
   ],
   imports: [
     BrowserModule,

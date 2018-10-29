@@ -32,6 +32,8 @@
 
 .inline-edit{
   cursor: text;
+  background-color: rgb(255, 246, 234);
+  border: blue;
 }
 
 /* (Optional) Apply a "closed-hand" cursor during drag operation. */
@@ -40,3 +42,4 @@
   cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
 }
+
