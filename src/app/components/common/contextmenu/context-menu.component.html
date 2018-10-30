@@ -1,12 +1,15 @@
-<div>
-  <div class="right" (click)="emitCloseEvent()">X</div>
-  <div *ngIf="show">
-
-      <div class="card">
-
-      </div>
-
-    
-  
+<div style="position: relative;">
+  <div class="right" (click)="this.show = true" style="line-height: 5px;float: right;cursor: pointer;">
+    <svg width="15" height="5">
+      <circle cx="2" cy="2" r="1.5" fill="grey"></circle>
+      <circle cx="7" cy="2" r="1.5" fill="grey"></circle>
+      <circle cx="12" cy="2" r="1.5" fill="grey"></circle>
+    </svg>
   </div>
+  <div *ngIf="show">
+    <div class="dropdown-menu dropdown-menu-sm show" style="position: absolute;top: 5px;left: inherit;right: 0px;">
+      <a class="dropdown-item" href="#" (click)="emitCloseEvent()">Delete</a>
+    </div>
+  </div>
+  <div class="clearfix"></div>
 </div>

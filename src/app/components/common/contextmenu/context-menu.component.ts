@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, HostListener, ElementRef} from '@angular/core';
 
 
 @Component({
@@ -8,17 +8,26 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ContextMenuComponent implements OnInit {
 
-  show: boolean = false;
+  show = false;
+ @Output() clickChange:  EventEmitter<number> = new EventEmitter<number>();
 
-  @Output('click') clickChange:  EventEmitter<number> = new EventEmitter<number>();
-
-  constructor() { }
+  constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
   }
 
-  emitCloseEvent(){
-    this.clickChange.emit(null);
+  emitCloseEvent() {
+     this.clickChange.emit(null);
+     this.show = false;
   }
+
+  @HostListener('document:click' , [ '$event' ])
+  closeOutClickOutside(event) {
+    console.log("Hello " + event);
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.show = false;
+    }
+  }
+
 
 }
