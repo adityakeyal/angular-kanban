@@ -9,7 +9,7 @@ import {Component, OnInit, Output, EventEmitter, HostListener, ElementRef} from 
 export class ContextMenuComponent implements OnInit {
 
   show = false;
- @Output() clickChange:  EventEmitter<number> = new EventEmitter<number>();
+ @Output() contextAction:  EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private elementRef: ElementRef) { }
 
@@ -17,7 +17,7 @@ export class ContextMenuComponent implements OnInit {
   }
 
   emitCloseEvent() {
-     this.clickChange.emit(null);
+     this.contextAction.emit("DELETE");
      this.show = false;
   }
 

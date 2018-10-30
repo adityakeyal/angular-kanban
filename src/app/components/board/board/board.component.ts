@@ -28,10 +28,10 @@ export class BoardComponent implements OnInit {
 
   }
 
-  addList(nameOfList: string) {
+  addList() {
     const newList: ListInterface = new List();
-    newList.name = nameOfList;
     newList.position = this.lists.length + 1;
+    newList.name = `List #${newList.position}`;
     if (this.lists === undefined) {
       this.lists = [];
     }

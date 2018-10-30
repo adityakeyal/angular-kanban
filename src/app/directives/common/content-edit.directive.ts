@@ -24,7 +24,7 @@ export class ContentEditDirective implements OnInit {
 
   @HostListener('keydown.enter', [] )
   exitContentEditable($event) {
-    this.el.nativeElement.focus();
+    this.el.nativeElement.blur();
     return false;
   }
 
