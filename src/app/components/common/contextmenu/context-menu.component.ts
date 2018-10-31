@@ -17,13 +17,12 @@ export class ContextMenuComponent implements OnInit {
   }
 
   emitCloseEvent() {
-     this.contextAction.emit("DELETE");
+     this.contextAction.emit('DELETE');
      this.show = false;
   }
 
   @HostListener('document:click' , [ '$event' ])
   closeOutClickOutside(event) {
-    console.log("Hello " + event);
     if (!this.elementRef.nativeElement.contains(event.target)) {
       this.show = false;
     }

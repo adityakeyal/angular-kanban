@@ -1,5 +1,5 @@
 
-<div class="list col custom-col list-drag-component" (dragover)="allowCardReplacement($event)" (drop)="dropCard($event)"  id="list-{{listIndex}}"  >
+<div class="list col custom-col list-drag-component"  (dragover)="allowCardReplacement($event)" (drop)="dropCard($event)"  id="list-{{listIndex}}"  >
   <app-context-menu (contextAction)="delete()" ></app-context-menu>
   <p class="list-name"  [(appContentEdit)]="list.name"></p>
 

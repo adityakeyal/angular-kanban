@@ -12,6 +12,7 @@
 .text-center.add-new-card:hover {
   opacity:0.9;
   color:#767676;
+
 }
 
 .text-center.add-new-card {
@@ -19,10 +20,12 @@
   color:#A6A6A6;
   cursor:pointer;
   opacity:0.4;
+  min-width: 230px;
 }
 
 .list-name{
   font-weight: bold;
+  text-align: center;
 }
 
 .list{
