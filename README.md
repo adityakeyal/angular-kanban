@@ -1,29 +1,21 @@
-# AngKanban
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
+# Kanban board in Angular 7
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+##Demo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+For a view of the sample demo have a look at : 
+https://adityakeyal.github.io/angular-kanban/index.html
 
-## Build
+##Details 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Simple Kanban board build only in Angular 7. Currently supported features
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-=======
-# angular-kanban
+ - Add unlimited Lists (Columns)
+ - Add unlimited Cards
+ - Text Support only in cards
+ - Drag and Drop card from one list to another
+ - Delete lists 
+ - Save to local storage and retrieve from Local Storage
