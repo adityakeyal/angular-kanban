@@ -4,6 +4,8 @@ import { MovementIntf } from 'src/app/model/card/movement';
 import {BoardService} from '../../../service/board/board-service';
 import {BoardModel} from '../../../model/board/board.model';
 import {LocalService} from '../../../service/board/local/local.service';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {Card} from '../../../model/card/card.model';
 
 
 
@@ -51,5 +53,14 @@ export class BoardComponent implements OnInit {
 
   deleteList(listIndex: number){
       this.lists.splice(listIndex,1);
+  }
+
+
+  getIds() : string[] {
+    let ids=[];
+    for( let i=0;i<this.lists.length;i++){
+      ids.push(`list-${i}`)
+    }
+    return ids;
   }
 }

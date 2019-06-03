@@ -9,3 +9,9 @@
   cursor:pointer;
   opacity:0.4;
 }
+
+.list-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}

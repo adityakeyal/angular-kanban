@@ -7,6 +7,8 @@ import {List} from '../../../model/list/list.model';
 import {DebugElement} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ContentEditDirective } from 'src/app/directives/common/content-edit.directive';
+import {ContextMenuComponent} from '../../common/contextmenu/context-menu.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 describe('BoardComponent', () => {
   let component: BoardComponent;
@@ -14,8 +16,8 @@ describe('BoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BoardComponent, ListComponent, SummaryComponent, ContentEditDirective],
-      imports: [FormsModule, ReactiveFormsModule ]
+      declarations: [ BoardComponent, ListComponent, SummaryComponent, ContentEditDirective, ContextMenuComponent],
+      imports: [FormsModule, ReactiveFormsModule, DragDropModule ]
     })
     .compileComponents();
   }));
@@ -47,7 +49,7 @@ describe('BoardComponent', () => {
   it( 'should add list on call', () => {
     component.lists = [];
     expect(component.lists.length).toEqual( 0);
-    component.addList('Name of List');
+    component.addList();
     expect(component.lists.length).toEqual( 1);
   });
 

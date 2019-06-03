@@ -1,11 +1,24 @@
 
-<div class="list col custom-col list-drag-component"  (dragover)="allowCardReplacement($event)" (drop)="dropCard($event)"  id="list-{{listIndex}}"  >
-  <app-context-menu (contextAction)="delete()" ></app-context-menu>
-  <p class="list-name"  [(appContentEdit)]="list.name"></p>
+<div class="list col custom-col list-drag-component"  cdkDrag  cdkDragLockAxis="x"    >
+  <app-context-menu cdkDragHandle (contextAction)="delete()" ></app-context-menu>
+
+
+  <div id="list-{{listIndex}}"  cdkDropList (cdkDropListDropped)="onTaskDrop($event)" [cdkDropListData]="list.cards"
+       [cdkDropListConnectedTo]="listIds"  class="example-list" >
+
+
+  <p class="list-name"  [(appContentEdit)]="list.name" ></p>
+
+
+
 
   <!-- List Card Starts -->
-  <div    id="list-one"  >
-    <app-card-summary  *ngFor="let card of this.list.cards;let i = index" [card]="card" [listIndex]="listIndex" [cardIndex]="i" attr.cardIndex="{{i}}" ></app-card-summary>
+  <div  >
+
+    <app-card-summary class="example-box" cdkDrag *ngFor="let card of this.list.cards;let i = index" [card]="card" [listIndex]="listIndex" [cardIndex]="i" attr.cardIndex="{{i}}" ></app-card-summary>
+
+  </div>
+
   </div>
   <!-- List Card Ends -->
   <h6 class="text-center add-new-card" (click)="addNewCard()" >Add new card...</h6>

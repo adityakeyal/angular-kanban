@@ -12,6 +12,7 @@ import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { ContentEditDirective } from './directives/common/content-edit.directive';
 import {LocalService} from './service/board/local/local.service';
 import { ContextMenuComponent } from './components/common/contextmenu/context-menu.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
@@ -31,6 +32,7 @@ import { ContextMenuComponent } from './components/common/contextmenu/context-me
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    DragDropModule
 
   ],
   providers: [ LocalService ],
