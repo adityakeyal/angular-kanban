@@ -3,9 +3,9 @@
     <div class="col-11"></div>
     <div class="col"><button (click)="saveBoard()">Save</button></div>
   </div>
-  <div class="row" style="height:inherit;">
+  <div class="row list-container" style="height:inherit;" >
     <app-list *ngFor="let list of lists;let i = index" [list]="list" [listIndex]="i"
-              (moveCardAcrossList)="moveCardAcrossList($event)"
+              [listIds] ="getIds()"
               (deleteList)="deleteList($event)"
               attr.listIndex="{{i}}"
     ></app-list>

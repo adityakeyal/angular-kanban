@@ -7,6 +7,8 @@ import {Card} from '../../../model/card/card.model';
 import {List} from '../../../model/list/list.model';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ContentEditDirective } from 'src/app/directives/common/content-edit.directive';
+import {ContextMenuComponent} from '../../common/contextmenu/context-menu.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 describe('ListComponent', () => {
@@ -16,8 +18,8 @@ describe('ListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ListComponent , SummaryComponent,
-        ContentEditDirective ],
-      imports: [ReactiveFormsModule, FormsModule]
+        ContentEditDirective, ContextMenuComponent ],
+      imports: [ReactiveFormsModule, FormsModule, DragDropModule]
     })
     .compileComponents();
   }));
@@ -51,10 +53,10 @@ describe('ListComponent', () => {
 
   it('should have add card button', () => {
     const addNewCardText = nativeElement.querySelector('.add-new-card').innerHTML;
-    expect(addNewCardText).toEqual('Add new item...');
+    expect(addNewCardText).toEqual('Add new card...');
   });
 
-  xit('heading should be of type ', () => {
-  });
+  // xit('heading should be of type ', () => {
+  // });
 
 });

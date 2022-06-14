@@ -7,6 +7,8 @@ import {SummaryComponent} from './components/board/card/summary/summary.componen
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import { ContentEditDirective } from './directives/common/content-edit.directive';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {ContextMenuComponent} from './components/common/contextmenu/context-menu.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -14,13 +16,15 @@ describe('AppComponent', () => {
       imports: [
         FormsModule,
         BrowserModule,
+        DragDropModule
       ],
       declarations: [
         AppComponent,
         SummaryComponent,
         ListComponent,
         BoardComponent,
-        ContentEditDirective
+        ContentEditDirective,
+        ContextMenuComponent,
         
       ],
     }).compileComponents();

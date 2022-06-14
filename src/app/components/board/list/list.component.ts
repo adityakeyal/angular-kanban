@@ -3,6 +3,7 @@ import {DOCUMENT} from '@angular/common';
 import {ListInterface, List} from '../../../model/list/list.model';
 import {Card, CardInterface} from '../../../model/card/card.model';
 import { MovementIntf, Movement } from 'src/app/model/card/movement';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -11,13 +12,11 @@ import { MovementIntf, Movement } from 'src/app/model/card/movement';
   styleUrls: ['./list.component.css']
 })
 
-
-
-
 export class ListComponent implements OnInit {
 
   @Input() list: ListInterface;
   @Input() listIndex: number;
+  @Input() listIds:string[]
   @Output() moveCardAcrossList: EventEmitter<MovementIntf> = new EventEmitter<MovementIntf>();
   @Output() newCardAdded: EventEmitter<Card> = new EventEmitter<CardInterface>();
   @Output() deleteList: EventEmitter<number> = new EventEmitter<number>();
@@ -70,5 +69,35 @@ export class ListComponent implements OnInit {
   }
 
 
-  
+  onTaskDrop($event: CdkDragDrop<Card[]>) {
+
+    console.log($event);
+
+    if ($event.previousContainer === $event.container) {
+      moveItemInArray($event.container.data, $event.previousIndex, $event.currentIndex);
+    } else {
+      transferArrayItem($event.previousContainer.data,
+        $event.container.data,
+        $event.previousIndex,
+        $event.currentIndex);
+    }
+
+
+
+
+  }
+
+
+
+
+
+  fetchListIds() {
+    const rtn = `[ 'list-0' , 'list-1']`;
+    return rtn;
+
+
+  }
+
+
+
 }
